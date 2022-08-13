@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-//using EmpresaDeliveryGodSpeed.Interfaces; //Por ahora está en modo comentario hasta que se agreguen las respectivas clases.
-//using EmpresaDeliveryGodSpeed.Servicios; //Por ahora está en modo comentario hasta que se agreguen las respectivas clases.
+using EmpresaDeliveryGodSpeed.Interfaces;
+using EmpresaDeliveryGodSpeed.Servicios;
 using CurrieTechnologies.Razor.SweetAlert2;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +17,7 @@ var cadenaConexion = new MySQLConfiguracion(builder.Configuration.GetConnectionS
 builder.Services.AddSingleton(cadenaConexion);
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddScoped<IRepartidorServicio, RepartidorServicio>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddResponseCompression();
 builder.Services.AddSweetAlert2();

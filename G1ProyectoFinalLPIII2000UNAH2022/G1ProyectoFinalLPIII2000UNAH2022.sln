@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmpresaDeliveryGodSpeed", "EmpresaDeliveryGodSpeed\EmpresaDeliveryGodSpeed.csproj", "{008267FC-276E-40D5-A1B0-1ECDD38BF140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{D68FA5D3-4539-4D60-A6F7-01C86263162C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datos", "Datos\Datos.csproj", "{D68FA5D3-4539-4D60-A6F7-01C86263162C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{E5AF54E9-D230-443A-BE18-FC6F3AB9DE0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{E5AF54E9-D230-443A-BE18-FC6F3AB9DE0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

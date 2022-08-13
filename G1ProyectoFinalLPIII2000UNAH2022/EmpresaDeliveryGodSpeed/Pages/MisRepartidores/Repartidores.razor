@@ -1,0 +1,98 @@
+﻿@page "/Repartidores"
+
+<AuthorizeView Roles="Administrador">
+
+    <Authorized Context="AuthenticationState">
+        <h3>Lista de Repartidores</h3>
+        <div class="for-group-row">
+            <div class="col-sm-10">
+                <a href="/Repartidor/Nuevo" class="btn btn-primary m-1">Nuevo Repartidor</a>
+            </div>
+        </div>
+
+        @if (listaRepartidor == null)
+        {
+            <p>No existen repartidores en el sistema</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código Repartidor</th>
+                        <th>Nombre</th>
+                        <th>Esta Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rep in listaRepartidor)
+                    {
+                        <tr>
+                            <td>@rep.CodigoRepartidor</td>
+                            <td>@rep.Nombre</td>
+
+                            <td>
+                                @if (@rep.EstaActivo)
+                                {
+                                    <span class="oi oi-circle-check" style="color: green;"></span>
+                                }
+                                else
+                                {
+                                    <span class="oi oi-circle-x" style="color: red;"></span>
+                                }
+                            </td>
+                            <th>
+                                <a class="btn btn-success" href="@($"/Repartidores/Editar/{rep.CodigoRepartidor}")">Editar</a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </Authorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="Usuario">
+
+    <Authorized Context="AuthenticationState">
+        <h3>Lista de Repartidores</h3>
+
+        @if (listaRepartidor == null)
+        {
+            <p>No existen repartidores en el sistema</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código Repartidor</th>
+                        <th>Nombre</th>
+                        <th>Esta Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rep in listaRepartidor)
+                    {
+                        <tr>
+                            <td>@rep.CodigoRepartidor</td>
+                            <td>@rep.Nombre</td>
+
+                            <td>
+                                @if (@rep.EstaActivo)
+                                {
+                                    <span class="oi oi-circle-check" style="color: green;"></span>
+                                }
+                                else
+                                {
+                                    <span class="oi oi-circle-x" style="color: red;"></span>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </Authorized>
+</AuthorizeView>

@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Servicios\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +15,11 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
     <PackageReference Include="Radzen.Blazor" Version="3.20.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj" />
+    <ProjectReference Include="..\Entidades\Entidades.csproj" />
   </ItemGroup>
 
 </Project>
