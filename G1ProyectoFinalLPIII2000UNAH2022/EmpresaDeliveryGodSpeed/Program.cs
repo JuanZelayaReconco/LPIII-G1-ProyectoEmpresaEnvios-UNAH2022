@@ -17,6 +17,7 @@ var cadenaConexion = new MySQLConfiguracion(builder.Configuration.GetConnectionS
 builder.Services.AddSingleton(cadenaConexion);
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddScoped<IRepartidorServicio, RepartidorServicio>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddResponseCompression();
@@ -39,6 +40,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapBlazorHub();
+app.MapControllers();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
