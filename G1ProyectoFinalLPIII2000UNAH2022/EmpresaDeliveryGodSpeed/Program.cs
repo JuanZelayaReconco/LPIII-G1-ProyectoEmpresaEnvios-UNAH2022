@@ -19,6 +19,8 @@ builder.Services.AddControllers();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddScoped<IRepartidorServicio, RepartidorServicio>();
+builder.Services.AddScoped<IEnvioReciboServicio, EnvioReciboServicio>();
+builder.Services.AddScoped<IDetalleEnvioServicio, DetalleEnvioServicio>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddResponseCompression();
 builder.Services.AddSweetAlert2();

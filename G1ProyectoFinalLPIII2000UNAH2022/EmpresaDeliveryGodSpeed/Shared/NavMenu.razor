@@ -35,11 +35,15 @@
             </Authorized>
         </AuthorizeView>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
+        <AuthorizeView Roles="Administrador, Usuario">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="NuevoEnvio">
+                        <iconify-icon icon="cryptocurrency:wings"></iconify-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Envios
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
     </nav>
 </div>
 

@@ -1,0 +1,111 @@
+﻿@page "/NuevoEnvio"
+
+<AuthorizeView Roles="Administrador, Usuario">
+    <Authorized Context="AuthenticationState">
+        <EditForm Model="@envio">
+            <div class="rz-card card" style="width: 100%">
+                <h1>
+                    <b>Empresa de Envíos "GodSpeed"</b>
+                </h1>
+                <h2>
+                    <b>Sistema de registro de envíos</b>
+                </h2>
+
+                 <div align="right">
+                     <b>Fecha: </b>
+                     <br />
+                     <RadzenDatePicker TValue="DateTime" ShowTime="true" ShowSeconds="true" HoursStep="1.5" MinutesStep="5" SecondsStep="10" @bind-Value=@envio.FechaHora DateFormat="MM/dd/yyyy HH:mm" Class="w-20" />
+
+                 </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <b>Número de Identidad del Cliente: </b>
+                        <InputText id="IdentidadCliente" class="form-control" @bind-Value="envio.IdentidadCliente" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <b>Cliente: </b>
+                        <InputText id="Nombre del Cliente" class="form-control" @bind-Value="envio.NombreCliente" />
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <b>Código Repartidor: </b>
+                        <InputText id="CodigoRepartidor" class="form-control" @bind-value="codigoRepartidor" ValueExpression="@( () => codigoRepartidor)" @onkeypress="@BuscarRepartidor" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <b>Repartidor: </b>
+                        <InputText readonly id="Repartidor" class="form-control" @bind-value="repartidor.Nombre" ValueExpression="@( () => repartidor.Nombre)" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <b>Dirección: </b>
+                        <InputText id="DireccionEnvio" class="form-control" @bind-Value="envio.DireccionEnvio" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <b>Número de Teléfono: </b>
+                        <InputText id="Telefono" class="form-control" @bind-Value="envio.Telefono" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <b>Tipo de Servicio: </b>
+                        <InputSelect id="TipoServicio" class="form-control" @bind-Value="detalleEnvio.TipoServicio">
+                                @foreach (var services in Enum.GetValues(typeof(TipoServicios)))
+                                {
+                                <option value="@services">@services</option>
+                                }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => detalleEnvio.TipoServicio)" />
+                     </div>
+
+                    <div class="col-md-3">
+                        <b>Costo del Envío (Lempiras): </b>
+                        <InputNumber id="PrecioEstimado" TValue="Decimal" class="form-control" @bind-Value="envio.Costo" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <b>Forma de Pago: </b>
+                        <InputSelect id="FormaPago" class="form-control" @bind-Value="detalleEnvio.FormaPago">
+                            @foreach (var pago in Enum.GetValues(typeof(FormaPago)))
+                            {
+                                <option value="@pago">@pago</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => detalleEnvio.FormaPago)" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <b>Descripción del (o los) Objeto a Entregar: </b>
+                        <InputText id="DescripcionObjetosEnvio" class="form-control" @bind-Value="detalleEnvio.DescripcionObjetosEnvio" />
+                    </div>
+                </div>
+            </div>
+
+            <div align="right">
+                <br />
+                <Input type="submit" class="btn btn-primary" value="Guardar Envío" @onclick="Guardar" />
+            </div>
+
+            <div align="right">
+                <br />
+                <input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+            </div>
+        </EditForm>
+    </Authorized>
+
+    <NotAuthorized>
+        <h1>No tiene los permisos requeridos</h1>
+    </NotAuthorized>
+
+</AuthorizeView>
